@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
 
+*{box-sizing: border-box;}
+
 body{
     font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
 }
 
-header{
+.Logo{
     height: 69px;
     width: 100%;
     background-color: #EC362D;
@@ -15,6 +18,68 @@ header{
     align-items: center;
     justify-content: center;
     box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 10;
 }
 
+/*Estilização da Tela Inicial*/
+.tela1-inicial article{
+    width: 1051px;
+    height: 181px;
+    margin: 140px auto 77px;
+    border: 1px dashed #D4D4D4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.tela1-inicial article p{
+    color: #B9B9B9;
+    font-size: 20px;
+    text-align: center;
+}
+.tela1-inicial article button{
+    background-color: #fafafa;
+    color: #EC362D;
+    font-size: 21px;
+    width: 151px;
+    height: 40px;
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+}
+
+.quizz-servidor{
+    width: 1051px;
+    height: auto;
+    margin: 0 auto;
+}
+.quizz-servidor header{
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+.quizz-servidor .todos-quizzes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.quizz-servidor figure{
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url("https://img.elo7.com.br/product/zoom/2F2E11C/paisagem-em-aquarela-29-x-21-paisagem.jpg");
+    background-size: cover;
+    width: 340px;
+    height: 181px;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    padding: 0 0 7px 18px;
+    display: flex;
+    align-items: flex-end;
+}
+.quizz-servidor figure figcaption{
+    color: #FFFFFF;
+    width: 300px;
+    font-size: 19px;
+    line-height: 22px;
+}
