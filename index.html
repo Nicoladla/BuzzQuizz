@@ -11,37 +11,68 @@
     <body>
         <header class="Logo">BuzzQuizz</header>
 
-        <div class="tela1-inicial">
-            <article>
+        <div class="tela1-inicial oculto">
+            <article class="sem-quizz-usuario">
                 <p>Você não criou nenhum <br> quizz ainda :(</p>
                 <button>Criar Quizz</button>
             </article>
-            <section class="quizz-usuario">
-
+            <section class="quizz-usuario oculto">
+                <header>
+                    Seus Quizzes
+                    <img src="" alt="">
+                </header>
+                <div class="seus-quizzes"></div>
             </section>
             <section class="quizz-servidor">
                 <header>Todos os Quizzes</header>
-                <div class="todos-quizzes">
-                    <figure>
-                        <figcaption>Acerte os personagens corretos dos Simpsons e prove seu amor!</figcaption>
-                    </figure>
-                    <figure>
-                        <figcaption>Acerte os personagens corretos dos Simpsons e prove seu amor!</figcaption>
-                    </figure>
-                    <figure>
-                        <figcaption>Acerte os personagens corretos dos Simpsons e prove seu amor!</figcaption>
-                    </figure>
-                    <figure>
-                        <figcaption>Acerte os personagens corretos dos Simpsons e prove seu amor!</figcaption>
-                    </figure>
-                    <figure>
-                        <figcaption>Acerte os personagens corretos dos Simpsons e prove seu amor!</figcaption>
-                    </figure>
-                    <figure>
-                        <figcaption>Acerte os personagens corretos dos Simpsons e prove seu amor!</figcaption>
-                    </figure>
-                </div>
+                <div class="todos-quizzes"></div>
             </section>
+        </div>
+
+        <div class="tela2-exibir_quizz">
+            <header class="titulo-do-quizz">
+                <img src="https://static.escolakids.uol.com.br/2019/07/paisagem-natural-e-paisagem-cultural.jpg" alt="quizz">
+                <div></div>
+                <h1>Titulo do quizz</h1>
+            </header>
+            <main>
+                <section class="pergunta-quizz">
+                    <header>Titulo da pergunta</header>
+                    <div class="opçao-de-resposta">
+                        <figure>
+                            <img src="https://static.escolakids.uol.com.br/2019/07/paisagem-natural-e-paisagem-cultural.jpg" alt="quizz">
+                            <figcaption class="res-errada">campo</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="https://static.escolakids.uol.com.br/2019/07/paisagem-natural-e-paisagem-cultural.jpg" alt="quizz">
+                            <figcaption class="res-certa">campo</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="https://static.escolakids.uol.com.br/2019/07/paisagem-natural-e-paisagem-cultural.jpg" alt="quizz">
+                            <figcaption class="cor-padrao">campo</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="https://static.escolakids.uol.com.br/2019/07/paisagem-natural-e-paisagem-cultural.jpg" alt="quizz">
+                            <figcaption class="cor-padrao">campo</figcaption>
+                        </figure>
+                    </div>
+                </section>
+                <aside class="resultado-quizz">
+                    <header>Titulo da pergunta</header>
+                        <figure>
+                            <img src="https://static.escolakids.uol.com.br/2019/07/paisagem-natural-e-paisagem-cultural.jpg" alt="quizz">
+                            <figcaption>
+                                Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o 
+                                loop infinito de comida e clique no botão abaixo para 
+                                usar o vira-tempo e reiniciar este teste.
+                            </figcaption>
+                        </figure>
+                </aside>
+                <footer class="final">
+                    <button>Reiniciar Quizz</button>
+                    <button>Voltar pra home</button>
+                </footer>
+            </main>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

@@ -25,7 +25,7 @@ body{
 }
 
 /*Estilização da Tela Inicial*/
-.tela1-inicial article{
+.sem-quizz-usuario{
     width: 1051px;
     height: 181px;
     margin: 140px auto 77px;
@@ -67,19 +67,194 @@ body{
     justify-content: space-between;
 }
 .quizz-servidor figure{
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url("https://img.elo7.com.br/product/zoom/2F2E11C/paisagem-em-aquarela-29-x-21-paisagem.jpg");
-    background-size: cover;
+    width: 340px;
+    height: 181px;
+    margin-bottom: 12px;
+    position: relative;
+}
+.quizz-servidor figure img{
+    width: 340px;
+    height: 181px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+.quizz-servidor figure div{
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
     width: 340px;
     height: 181px;
     border-radius: 5px;
-    margin-bottom: 12px;
-    padding: 0 0 7px 18px;
-    display: flex;
-    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 .quizz-servidor figure figcaption{
     color: #FFFFFF;
     width: 300px;
     font-size: 19px;
     line-height: 22px;
+    position: absolute;
+    bottom: 7px;
+    left: 18px;
+    z-index: 2;
+}
+
+/*Estilização da segunda Tela (Exibição do quizz)*/
+.titulo-do-quizz{
+    width: 100%;
+    height: 227px;
+    margin: 69px 0 42px;
+    position: relative;
+}
+.titulo-do-quizz div{
+    width: 100%;
+    height: 227px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57));
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+.titulo-do-quizz img{
+    width: 100%;
+    height: 227px;
+    object-fit: cover;
+}
+.titulo-do-quizz h1{
+    width: 254px;
+    color: #FFFFFF;
+    font-size: 39px;
+    margin-top: -19.5px;
+    margin-left: -127px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+    /*Aqui sera feito o layout das perguntas*/
+.pergunta-quizz{
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    width: 759px;
+    height: 676px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.pergunta-quizz header{
+    color: white;
+    background-color: #434CA0;
+    font-weight: bold;
+    font-size: 23px;
+    width: 688px;
+    height: 137px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.opçao-de-resposta{
+    width: 688px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.opçao-de-resposta figure{
+    margin-bottom: 20px;
+}
+.opçao-de-resposta img{
+    width: 329px;
+    height: 175px;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+        /*Aqui será definido uma cor padrao para a descrição das img e
+        uma cor correspondente a resposta certa e as erradas e tambem
+        a estilizaçao quando clicado em uma alternativa*/
+.res-errada{
+    color: #FF4B4B;
+    font-weight: 700;
+    font-size: 20px;
+}
+.res-certa{
+    color: #009C22;
+    font-weight: 700;
+    font-size: 20px;
+}
+.cor-padrao{
+    color: #000000;
+    font-weight: 700;
+    font-size: 20px;
+}
+.desfocar{
+    opacity: 0.3;
+}
+    /*Aqui será estilizado o quadro do resultado e os botões*/
+.resultado-quizz{
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    width: 759px;
+    height: 430px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.resultado-quizz header{
+    color: white;
+    background-color: #434CA0;
+    font-weight: bold;
+    font-size: 23px;
+    width: 727px;
+    height: 99px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.resultado-quizz figure{
+    width: 727px;
+    margin: 0 auto;
+    display: flex;
+}
+.resultado-quizz img{
+    width: 364px;
+    height: 273px;
+    object-fit: cover;
+}
+.resultado-quizz figcaption{
+    color: #484848;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 25px;
+    margin-left: 21px;
+}
+.final{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.final button:first-child{
+    background-color: #EC362D;
+    color: #FFF5F4;
+    font-size: 21px;
+    border-radius: 15px;
+    border: none;
+    width: 260px;
+    height: 52px;
+}
+.final button:last-child{
+    background-color: #fafafa;
+    color: #818181;
+    font-size: 21px;
+    border: none;
+    margin: 16px 0 40px;
+}
+
+/*Essa é a classe usada para "desligar" uma tela*/
+.oculto{
+    display: none;
 }
