@@ -23,7 +23,7 @@ body{
     left: 0;
     z-index: 10;
 }
-
+{
 /*Estilização da Tela Inicial*/
 .sem-quizz-usuario{
     width: 1051px;
@@ -70,7 +70,11 @@ body{
     width: 340px;
     height: 181px;
     margin-bottom: 12px;
+    cursor: pointer;
     position: relative;
+}
+.quizz-servidor figure:hover{
+    opacity: 0.8;
 }
 .quizz-servidor figure img{
     width: 340px;
@@ -199,6 +203,7 @@ body{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     width: 759px;
     height: 430px;
+    overflow: hidden;
     margin: 0 auto 48px;
     display: flex;
     flex-direction: column;
@@ -263,4 +268,5 @@ body{
 /*Essa é a classe usada para "desligar" uma tela*/
 .oculto{
     display: none;
+}
 }

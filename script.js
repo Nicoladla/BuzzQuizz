@@ -1,3 +1,4 @@
+{
 //Essa função é utilizada para embaralhar um array.
 function embaralharArray(arr){
     for(let i = arr.length-1; i>0; i--){
@@ -34,7 +35,10 @@ function renderizarQuizzServidor(res){
 
 //Essa é a parte em que acorre a troca entre a tela inicial e a exibição do quizz.
 //Essa também é a parte em que ocorre a criação dinamica da tela de exibição do quizz.
+let quizzAtual;
 function irPraTelaDoQuizz(idDoQuizz){
+    quizzAtual= idDoQuizz;
+
     const telaInicial= document.querySelector(".tela1-inicial");
     const telaExibiçaoQuizz= document.querySelector(".tela2-exibir_quizz");
 
@@ -45,11 +49,14 @@ function irPraTelaDoQuizz(idDoQuizz){
     promessa.then(renderizarTelaQuizz);
 }
 
+let perguntasEresultado;
+let exibirTitulo;
+let niveisDeAcerto;
 function renderizarTelaQuizz(quizz){
-    console.log(quizz.data.questions)
+    niveisDeAcerto= quizz.data.levels;
 
-    const exibirTitulo= document.querySelector(".titulo-do-quizz");
-    const perguntasEresultado= document.querySelector(".tela2-exibir_quizz main");
+    perguntasEresultado= document.querySelector(".tela2-exibir_quizz main");
+    exibirTitulo= document.querySelector(".titulo-do-quizz");
     let titulosDasPergutas;
     const numeroDeAlternativas= [];
 
@@ -60,6 +67,8 @@ function renderizarTelaQuizz(quizz){
     `;
 
     //Nesse local é onde é adicionado cada uma das perguntas, e é adicionado uma cor ao titulo.
+    perguntasEresultado.innerHTML= "";
+
     for(let i=0; i<quizz.data.questions.length; i++){
 
         perguntasEresultado.innerHTML+=`
@@ -81,6 +90,9 @@ function renderizarTelaQuizz(quizz){
 
         renderizarAlternativas(quizz.data.questions[i], `.identificador${i}`);
     }
+
+    //Após execultado essa função, a tela sera scrollada para a primeira pergunta.
+    setTimeout(scrollarPraProxPergunta, 2000);
 }
 
 function renderizarAlternativas(questao, indentificador){
@@ -111,29 +123,32 @@ function renderizarAlternativas(questao, indentificador){
             </figure>
         `;
     }
-
-    console.log(alternativas)//
 }
-//Essa é a parte em que o usuário seleciona uma resposta e descobre se ele acertou.
-let contador= 1;
-function scrolarPraProxPergunta(){
-    //Aqui a variável pega todos os filhos do elemento main.
-    const arrayDePerguntas= document.querySelector(".tela2-exibir_quizz main").children;
 
-    //Aqui, vai ser scrolado pergunta por pergunta, de acordo for respondendo
+//Essa é a parte em que o usuário seleciona uma resposta e descobre se ele acertou.
+    //Essa é a variável que pega todos os filhos do elemento main.
+let arrayDePerguntas;
+let contador= 0;
+
+function scrollarPraProxPergunta(){
+    arrayDePerguntas= perguntasEresultado.children;
+
+    //Aqui, vai ser scrolado pergunta por pergunta, de acordo for respondendo.    
     if(contador < arrayDePerguntas.length){
         arrayDePerguntas[contador].scrollIntoView();
         contador++;
     }else{
-        contador= 1;
+        contador= 0;
+        exibirResultadoDoQuizz();
     }
 }
 
+let numeroDeAcertos= 0;
 function escolherAlternativa(alternativaSelecionada){
     const alternativas= alternativaSelecionada.parentNode;
     
     //Aqui é verificado se a pergunta já teve alguma alternativa selecionada;
-    if(!alternativaSelecionada.classList.contains("desfocar")){
+    if(alternativas.querySelector(".desfocar") === null){
         
         //Aqui é selcionado a alternativa clicada.
         for(let i=0; i<alternativas.children.length; i++){
@@ -145,23 +160,51 @@ function escolherAlternativa(alternativaSelecionada){
             alternativas.children[i].children[1].classList.remove("cor-padrao");
         }
 
-        setTimeout(scrolarPraProxPergunta, 2000);
+        //Aqui é verificado se a alternativa clicada é a resposta certa. 
+        if(alternativaSelecionada.children[1].classList.value === "res-certa"){
+            numeroDeAcertos++;
+        }
+        setTimeout(scrollarPraProxPergunta, 2000);
     }
-
-    console.log(alternativaSelecionada)
-    console.log(alternativas.parentNode)
 }
 
-{
-/* <aside class="resultado-quizz oculto">
-    <header>Titulo da pergunta</header>
-    <figure>
-        <img src="https://static.escolakids.uol.com.br/2019/07/paisagem-natural-e-paisagem-cultural.jpg" alt="quizz">
-        <figcaption>
-            Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o 
-            loop infinito de comida e clique no botão abaixo para 
-            usar o vira-tempo e reiniciar este teste.
-        </figcaption>
-    </figure>
-</aside> */
+let caixaDeResultado;
+function exibirResultadoDoQuizz(){
+    const resultadoDeAcertos= (numeroDeAcertos / arrayDePerguntas.length)*100;
+    const porcentagemDeAcertos= Math.round(resultadoDeAcertos);
+    let descriçãoDoResultado;
+
+    for(let i=0; i<niveisDeAcerto.length; i++){
+        if(porcentagemDeAcertos >= niveisDeAcerto[i].minValue){
+            descriçãoDoResultado= niveisDeAcerto[i];
+        }
+    }
+
+    perguntasEresultado.innerHTML+= `
+        <aside class="resultado-quizz">
+            <header>${porcentagemDeAcertos}% de acerto: ${descriçãoDoResultado.title}</header>
+            <figure>
+                <img src="${descriçãoDoResultado.image}" alt="quizz">
+                <figcaption>${descriçãoDoResultado.text}</figcaption>
+            </figure>
+        </aside>
+    `;
+
+    caixaDeResultado= perguntasEresultado.querySelector(".resultado-quizz");
+    caixaDeResultado.scrollIntoView();
+
+    numeroDeAcertos= 0;
+}
+
+function voltarPraTelaInicial(){
+    window.location.reload();
+}
+
+function reiniciarQuizz(){
+    contador= 0;
+    numeroDeAcertos= 0;
+
+    exibirTitulo.scrollIntoView();
+    irPraTelaDoQuizz(quizzAtual);
+}
 }
