@@ -17,4 +17,242 @@ header{
     box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
     z-index: 10;
 }
+{
+/* nicolas já colocou o fun cinza claro */
+.create{
+    background-color: #E5E5E5;
+}
 
+.createAquizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.createAquizz .hidden{
+    display: none;
+}
+
+.createAquizz > h1{
+    font-weight: 700;
+    color: #000000;
+    font-size: 23px;
+    margin-top: 80px;
+}
+
+.basicInfo{
+    height: 256px;
+    width: 600px;
+    padding: 18px 0;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    background-color: #FFFFFF;
+    margin-top: 27px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.basicInfo > input{
+    width: 564px;
+    height: 46px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+}
+ 
+.basicInfo > input::placeholder{
+    font-size: 19px;
+    color: #bababa;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.createAquizz > button {
+    font-weight: 400;
+    color: #fff5f4;
+    border: none;
+    background-color: #EC362D;
+    border-radius: 15px;
+    width: 368.86px;
+    height: 54px;
+    font-size: 21px;
+    margin-top: 85px; 
+    margin-bottom: 100px ;
+}
+
+.createQuestions{
+    position: relative;
+    width: 600px;
+    padding: 18px 17px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    background-color: #FFFFFF;
+    margin-top: 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.createQuestions > .ionicon {
+    font-size: 35px;
+    position: absolute;
+    top: 28px;
+    right: 25px;
+    color: #000000;
+    opacity: 50%;
+}
+
+
+
+/* .createQuestions > ion-icon .nosee {
+    color: #FFFFFF;
+} */
+
+
+.createQuestions > .reduced {
+    display: none;
+}
+
+
+.createQuestions > input{
+    width: 564px;
+    height: 46px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    margin-top: 13px;
+}
+
+.createQuestions  > .wrongImage{
+    margin-bottom: 28px;
+}
+
+.createQuestions > input::placeholder{
+    font-size: 19px;
+    color: #bababa;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.createQuestions > h2{
+    font-weight: 700;
+    color: #000000;
+    font-size: 20px;
+    margin-top: 26px;
+    margin-bottom: 11px;
+}
+
+
+.createQuestions > .expanded > input{
+    width: 564px;
+    height: 46px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    margin-top: 13px;
+}
+
+.createQuestions  > .expanded > .wrongImage{
+    margin-bottom: 28px;
+}
+
+.createQuestions > .expanded > input::placeholder{
+    font-size: 19px;
+    color: #bababa;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.createQuestions > .expanded > h2{
+    font-weight: 700;
+    color: #000000;
+    font-size: 20px;
+    margin-top: 26px;
+    margin-bottom: 11px;
+}
+
+.createLevels{
+    width: 600px;
+    padding: 18px 17px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    background-color: #FFFFFF;
+    margin-top: 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.createLevels > h2{
+    font-weight: 700;
+    color: #000000;
+    font-size: 20px;
+    margin-top: 18px;
+    margin-bottom: 11px;
+}
+
+.createLevels > input{
+    width: 564px;
+    height: 46px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    margin-top: 9px;
+}
+
+.createLevels > input::placeholder{
+    font-size: 19px;
+    color: #bababa;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.quizzReady{
+    width: 500px;
+    height: 266px;
+    margin-top: 46px;
+    position: relative;
+}
+ .gradient{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%);
+ }
+
+.quizzReady > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    
+}
+
+.quizzReady > h2{
+    position: absolute;
+    left: 20px;
+    bottom:18px;
+    color: #FFFFFF;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+button.accessQuizz{
+    width: 279.64px;
+    height: 44px;
+    margin-bottom: 28px;
+}
+
+h3{
+    font-size: 21px;
+    color: #818181;
+}
+}
