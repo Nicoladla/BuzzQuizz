@@ -26,7 +26,8 @@ body{
 
 /* ========================= */
 
- .sem-quizz-usuario {
+/*Estilização da Tela Inicial*/
+.sem-quizz-usuario {
     width: 1051px;
     height: 181px;
     margin: 140px auto 77px;
@@ -50,12 +51,17 @@ body{
     height: 40px;
     border: 1px dashed #EC362D;
     border-radius: 50px;
+    cursor: pointer;
 }
-
+.tela1-inicial article button:hover{
+    opacity: 0.6;
+}
+    /*Aqui é onde é estilizado os quizzes do servidor */
 .quizz-servidor{
-    width: 1051px;
+    width: 1080px;
     height: auto;
     margin: 0 auto;
+    padding-left: 15px;
 }
 .quizz-servidor header{
     font-weight: 700;
@@ -65,11 +71,11 @@ body{
 .quizz-servidor .todos-quizzes{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 .quizz-servidor figure{
     width: 340px;
     height: 181px;
+    margin-right: 15px;
     margin-bottom: 12px;
     cursor: pointer;
     position: relative;
@@ -84,7 +90,7 @@ body{
     border-radius: 5px;
     margin-bottom: 12px;
 }
-.quizz-servidor figure div{
+.gradiente{
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
     width: 340px;
     height: 181px;
@@ -104,7 +110,64 @@ body{
     left: 18px;
     z-index: 2;
 }
- 
+    /*Aqui é onde é estilizado os quizzes do usuário*/
+.quizz-usuario{
+    width: 1080px;
+    height: auto;
+    margin: 140px auto 77px;
+    padding-left: 15px;
+}
+.quizz-usuario header{
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+.quizz-usuario header h1{
+    font-weight: 700;
+    font-size: 20px;
+}
+.quizz-usuario header ion-icon{
+    color: #EC362D;
+    font-size: 31px;
+    margin-left: 17px;
+    cursor: pointer;
+}
+.quizz-usuario header ion-icon:hover{
+    opacity: 0.8;
+}
+.seus-quizzes{
+    display: flex;
+    flex-wrap: wrap;
+}
+.seus-quizzes figure{
+    width: 340px;
+    height: 181px;
+    margin-right: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    position: relative;
+}
+.seus-quizzes figure:hover{
+    opacity: 0.8;
+}
+.seus-quizzes figure img{
+    width: 340px;
+    height: 181px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+.seus-quizzes figure figcaption{
+    color: #FFFFFF;
+    width: 300px;
+    font-size: 19px;
+    line-height: 22px;
+    position: absolute;
+    bottom: 7px;
+    left: 18px;
+    z-index: 2;
+}
+
 /*Estilização da segunda Tela (Exibição do quizz)*/
  .titulo-do-quizz{
     width: 100%;
@@ -266,11 +329,6 @@ body{
     opacity: 0.5;
 } 
 
-/*Essa é a classe usada para "desligar" uma tela*/
-/* .oculto{
-    display: none;
-}
- */
 
 /* nicolas já colocou o fun cinza claro */
 .create{
@@ -540,5 +598,8 @@ h3{
     font-size: 21px;
     color: #818181;
 }  
-/*Estilização da Tela Inicial*/
 /* ==================== */
+/*Essa é a classe usada para "desligar" uma tela*/
+.oculto{
+    display: none;
+}

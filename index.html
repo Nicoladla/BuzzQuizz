@@ -8,21 +8,49 @@
         <link rel="stylesheet" href="style.css"/>
         <title>BuzzQuizz</title>
     </head>
-    <body class="create">
+    <body>
         <header class="Logo">BuzzQuizz</header>
 
         <div class="tela1-inicial">
             <article class="sem-quizz-usuario">
                 <p>Você não criou nenhum <br> quizz ainda :(</p>
-                <button>Criar Quizz</button>
+                <button onclick="irPraTelaDeCriaçãoDoQuizz()">Criar Quizz</button>
             </article>
+
             <section class="quizz-usuario oculto">
                 <header>
-                    Seus Quizzes
-                    <img src="" alt="">
+                    <h1>Seus Quizzes</h1>
+                    <ion-icon name="add-circle" onclick="irPraTelaDeCriaçãoDoQuizz()"></ion-icon>
                 </header>
-                <div class="seus-quizzes"></div>
+                <div class="seus-quizzes">
+                    <figure>
+                        <img src="http://2.bp.blogspot.com/-XSK_vuuo1Mk/UgfApfkSntI/AAAAAAAAAPQ/3Rx1KsPFBFs/s1600/13430685407.jpg" alt="quizz">
+                        <div class="gradiente"></div>
+                        <figcaption>Titulo do quizz</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="http://2.bp.blogspot.com/-XSK_vuuo1Mk/UgfApfkSntI/AAAAAAAAAPQ/3Rx1KsPFBFs/s1600/13430685407.jpg" alt="quizz">
+                        <div class="gradiente"></div>
+                        <figcaption>Titulo do quizz</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="http://2.bp.blogspot.com/-XSK_vuuo1Mk/UgfApfkSntI/AAAAAAAAAPQ/3Rx1KsPFBFs/s1600/13430685407.jpg" alt="quizz">
+                        <div class="gradiente"></div>
+                        <figcaption>Titulo do quizz</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="http://2.bp.blogspot.com/-XSK_vuuo1Mk/UgfApfkSntI/AAAAAAAAAPQ/3Rx1KsPFBFs/s1600/13430685407.jpg" alt="quizz">
+                        <div class="gradiente"></div>
+                        <figcaption>Titulo do quizz</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="http://2.bp.blogspot.com/-XSK_vuuo1Mk/UgfApfkSntI/AAAAAAAAAPQ/3Rx1KsPFBFs/s1600/13430685407.jpg" alt="quizz">
+                        <div class="gradiente"></div>
+                        <figcaption>Titulo do quizz</figcaption>
+                    </figure>
+                </div>
             </section>
+
             <section class="quizz-servidor">
                 <header>Todos os Quizzes</header>
                 <div class="todos-quizzes"></div>
@@ -41,8 +69,7 @@
             </footer>
         </div> 
 
-
-        <div class="createAquizz">
+        <div class="createAquizz oculto">
             <h1>Comece pelo começo</h1>
             <div class="basicInfo">
                 <input type="text" class="title" placeholder="Título do seu quizz">
@@ -53,6 +80,7 @@
             <button class="proceedToQuestions" onclick="getBasicInfoValues(); setTimeout(createQuestions(),1500)">Prosseguir pra criar perguntas</button> 
    
         </div>
+
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

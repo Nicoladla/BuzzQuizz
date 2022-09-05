@@ -25,7 +25,7 @@ function renderizarQuizzServidor(res){
         quizzServidor.innerHTML+= `
             <figure id="${res.data[i].id}" onclick="irPraTelaDoQuizz(${res.data[i].id})">
                 <img src="${res.data[i].image}" alt="quizz">
-                <div></div>
+                <div class="gradiente"></div>
                 <figcaption>${res.data[i].title}</figcaption>
             </figure>
         `;
@@ -206,8 +206,17 @@ function reiniciarQuizz(){
     exibirTitulo.scrollIntoView();
     irPraTelaDoQuizz(quizzAtual);
 }
- 
-//--------------------------------------------
+
+
+//Essa é a parte em que o usuário vai para a tela de criação do quizz.
+function irPraTelaDeCriaçãoDoQuizz(){
+    const telaInicial= document.querySelector(".tela1-inicial");
+    const telaCriaçãoQuizz= document.querySelector(".createAquizz");
+
+    telaInicial.classList.add("oculto");
+    telaCriaçãoQuizz.classList.remove("oculto");
+}
+
 
 let objQuizz = {
     title: undefined,
@@ -559,9 +568,10 @@ promisse.then(getToLocalStorage);
 
 function getToLocalStorage(reponse){
 
-    const receivedFromAPI = reponse.data;
+    const receivedFromAPI = reponse.data.id;
 
-    localStorage.setItem('userQuizz', JSON.stringify(receivedFromAPI));
+
+    localStorage.setItem('idQuizzUsuario', JSON.stringify(receivedFromAPI));
 
     quizzIsReady();
 }
@@ -584,3 +594,4 @@ function quizzIsReady() {
 
 
 /* ======= */
+
