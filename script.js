@@ -23,7 +23,7 @@ function renderizarQuizzServidor(res){
 
     for(let i=0; i<res.data.length; i++){
         quizzServidor.innerHTML+= `
-            <figure id="${res.data[i].id}" onclick="irPraTelaDoQuizz(${res.data[i].id})">
+            <figure id="${res.data[i].id}" onclick="irPraTelaDoQuizz(${res.data[i].id})" data-identifier="quizz-card">
                 <img src="${res.data[i].image}" alt="quizz">
                 <div class="gradiente"></div>
                 <figcaption>${res.data[i].title}</figcaption>
@@ -71,7 +71,7 @@ function renderizarTelaQuizz(quizz){
     for(let i=0; i<quizz.data.questions.length; i++){
 
         perguntasEresultado.innerHTML+=`
-            <section class="pergunta-quizz identificador${i}">
+            <section class="pergunta-quizz identificador${i}" data-identifier="question">
                 <header>${quizz.data.questions[i].title}</header>
                 <div class="opçao-de-resposta"></div>
             </section>
@@ -116,7 +116,7 @@ function renderizarAlternativas(questao, indentificador){
         }
 
         opçãoDeResposta.innerHTML+=`
-            <figure onclick="escolherAlternativa(this)">
+            <figure onclick="escolherAlternativa(this)" data-identifier="answer">
                 <img src="${alternativas[i].image}" alt="quizz">
                 <figcaption class="${valorDaAlternativa} cor-padrao">${alternativas[i].text}</figcaption>
             </figure>
@@ -292,8 +292,8 @@ function createQuestions(){
 
         for(let i = 1; i < numQuestions ; i++){
             hiddenQuestions = hiddenQuestions + `
-            <div class="createQuestions">
-                <ion-icon class = "ionicon" name="create-sharp" onclick = "expand(this)"></ion-icon>
+            <div class="createQuestions" data-identifier="question-form">
+                <ion-icon class = "ionicon" name="create-sharp" onclick = "expand(this)" data-identifier="expand"></ion-icon>
                 <h2 class = "apparent">Pergunta ${i+1}</h2>
                     <div class = "reduced">
                         <input type="text" class="theQuestion${i+1}" placeholder="Texto da pergunta">
@@ -314,7 +314,7 @@ function createQuestions(){
 
         createAquizz.innerHTML = createAquizz.innerHTML + `
         <h1>Crie suas perguntas</h1>
-        <div class="createQuestions">
+        <div class="createQuestions" data-identifier="question-form">
                     <h2>Pergunta 1</h2>
                     <input type="text" class="theQuestion1" placeholder="Texto da pergunta">
                     <input type="text" class="questionColor1" placeholder="Cor de fundo da pergunta">
@@ -330,7 +330,7 @@ function createQuestions(){
                     <input type="text" class="wrongImage1-3" placeholder="URL da imagem 3">
         </div>
         ${hiddenQuestions}
-        <button class="proceedTolevels" onclick = "getQuestionValues(), setTimeout(createLevels(),1500)">Prosseguir pra criar níveis</button>`;
+        <button class="proceedTolevels" onclick = "getQuestionValues()">Prosseguir pra criar níveis</button>`;
 
         }
         
@@ -456,6 +456,7 @@ function getQuestionValues(){
     }
 
     console.log(objQuizz.questions);
+    setTimeout(createLevels(),1500)
 } 
 
 function expand2(ioniconn){
@@ -472,8 +473,8 @@ function createLevels(){
 
     for(let l = 1; l < numLevels ; l++){
         hiddenLevels = hiddenLevels + `
-            <div class="createLevels">
-                <ion-icon class = "ionicon2" name="create-sharp" onclick = "expand2(this)"></ion-icon>
+            <div class="createLevels" data-identifier="level">
+                <ion-icon class = "ionicon2" name="create-sharp" onclick = "expand2(this)" data-identifier="expand"></ion-icon>
                 <h2>Nível ${l+1}</h2>
                 <div class = 'reduced'>
                     <input type="text" class="levelTitle${l+1}" placeholder="Título do Nível">
@@ -486,7 +487,7 @@ function createLevels(){
 
     createAquizz.innerHTML = createAquizz.innerHTML + `
             <h1>Agora, decida os níveis</h1>
-            <div class="createLevels">
+            <div class="createLevels" data-identifier="level">
                 <h2>Nível 1</h2>
                 <input type="text" class="levelTitle1" placeholder="Título do Nível">
                 <input type="text" class="percent1" placeholder="% de acerto mínima">

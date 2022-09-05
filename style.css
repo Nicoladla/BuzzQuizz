@@ -603,3 +603,56 @@ h3{
 .oculto{
     display: none;
 }
+
+@media(max-width: 1000px){
+
+    .createQuestions{
+        width: 100%;
+    }
+
+    .createQuestions > input{
+        width: 88%;
+    }
+
+    .createQuestions > .expanded > input{
+        width: 88%;
+    }
+    
+    .basicInfo {
+        width: 100%;
+    }
+
+    .basicInfo > input{
+        width: 88%;
+    }
+
+    .createLevels{
+        width: 100%;
+    }
+
+    .createLevels > input{
+        width: 88%;
+    }
+
+    .createLevels > .expanded2 > input{
+        width: 88%;
+    }
+
+    .tela1-inicial article button{
+        width: 88%;
+        padding: 0 3%;
+    }
+
+    .sem-quizz-usuario {
+        width: 100%;
+        margin-top: 140px ;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .quizz-servidor{
+        width: 100%;
+        padding-left: 10%;
+    }
+
+}

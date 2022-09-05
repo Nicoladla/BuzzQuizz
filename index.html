@@ -14,15 +14,15 @@
         <div class="tela1-inicial">
             <article class="sem-quizz-usuario">
                 <p>Você não criou nenhum <br> quizz ainda :(</p>
-                <button onclick="irPraTelaDeCriaçãoDoQuizz()">Criar Quizz</button>
+                <button onclick="irPraTelaDeCriaçãoDoQuizz()" data-identifier="create-quizz">Criar Quizz</button>
             </article>
 
             <section class="quizz-usuario oculto">
                 <header>
                     <h1>Seus Quizzes</h1>
-                    <ion-icon name="add-circle" onclick="irPraTelaDeCriaçãoDoQuizz()"></ion-icon>
+                    <ion-icon name="add-circle" onclick="irPraTelaDeCriaçãoDoQuizz()" data-identifier="create-quizz"></ion-icon>
                 </header>
-                <div class="seus-quizzes">
+                <div class="seus-quizzes" data-identifier="user-quizzes">
                     <figure>
                         <img src="http://2.bp.blogspot.com/-XSK_vuuo1Mk/UgfApfkSntI/AAAAAAAAAPQ/3Rx1KsPFBFs/s1600/13430685407.jpg" alt="quizz">
                         <div class="gradiente"></div>
@@ -53,7 +53,7 @@
 
             <section class="quizz-servidor">
                 <header>Todos os Quizzes</header>
-                <div class="todos-quizzes"></div>
+                <div class="todos-quizzes" data-identifier="general-quizzes"></div>
             </section>
         </div>
         <div class="tela2-exibir_quizz oculto">
