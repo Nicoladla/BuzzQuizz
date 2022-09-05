@@ -6,6 +6,25 @@
     }
 }
 
+//Essa é a função que armazena o id do quizz.
+function getToLocalStorage(reponse){
+    const receivedFromAPI = reponse.data.id;
+    let todosOsSeusQuizzes= [];
+
+    if(localStorage.getItem("idsQuizzUsuario") === null){
+        todosOsSeusQuizzes.push(receivedFromAPI);
+
+    }else{
+        todosOsSeusQuizzes= localStorage.getItem("idsQuizzUsuario");
+        todosOsSeusQuizzes= JSON.parse(todosOsSeusQuizzes);
+        todosOsSeusQuizzes.push(receivedFromAPI);
+    }
+
+    localStorage.setItem(`idsQuizzUsuario`, [JSON.stringify(todosOsSeusQuizzes)]);
+
+    quizzIsReady();
+}
+
 //Esse é o link da API do BuzzQuizz
 const API= "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes";
 
@@ -16,19 +35,53 @@ function buscarQuizzesServidor(){
 }
 buscarQuizzesServidor();
 
+//Essa é a parte em que os quizzes do usuário são renderizados
+function renderizarQuizzUsuario(seusQuizzes){
+    const seusquizzUsuario= document.querySelector(".quizz-usuario .seus-quizzes");
+
+    const semQuizzUsuario= document.querySelector(".sem-quizz-usuario");
+    const quizzUsuario= document.querySelector(".quizz-usuario");
+
+    semQuizzUsuario.classList.add('oculto');
+    quizzUsuario.classList.remove('oculto');
+
+    seusquizzUsuario.innerHTML+= `
+                <figure id="${seusQuizzes.id}" onclick="irPraTelaDoQuizz(${seusQuizzes.id})">
+                    <img src="${seusQuizzes.image}" alt="quizz">
+                    <div class="gradiente"></div>
+                    <figcaption>${seusQuizzes.title}</figcaption>
+                </figure>
+            `;
+}
+
 function renderizarQuizzServidor(res){
     const quizzServidor= document.querySelector(".quizz-servidor .todos-quizzes");
+    console.log(res.data)
+
+    //Aqui é pegado os ids dos quizzes do usuario e Deserializado.
+    let quizzesDoUsuario= localStorage.getItem("idsQuizzUsuario");
+    quizzesDoUsuario= JSON.parse(quizzesDoUsuario);
 
     quizzServidor.innerHTML= ""
 
+    
     for(let i=0; i<res.data.length; i++){
+
+        for(let j=0; j<quizzesDoUsuario.length; j++){
+
+            if(quizzesDoUsuario[j] === res.data[i].id){
+                renderizarQuizzUsuario(res.data[i]);
+                break;
+            }
+        }
+
         quizzServidor.innerHTML+= `
-            <figure id="${res.data[i].id}" onclick="irPraTelaDoQuizz(${res.data[i].id})">
-                <img src="${res.data[i].image}" alt="quizz">
-                <div class="gradiente"></div>
-                <figcaption>${res.data[i].title}</figcaption>
-            </figure>
-        `;
+                <figure id="${res.data[i].id}" onclick="irPraTelaDoQuizz(${res.data[i].id})">
+                    <img src="${res.data[i].image}" alt="quizz">
+                    <div class="gradiente"></div>
+                    <figcaption>${res.data[i].title}</figcaption>
+                </figure>
+            `;
     }
 }
 
@@ -564,16 +617,6 @@ function getLevelValues(){
 const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', objQuizz);
 promisse.then(getToLocalStorage);
 
-}
-
-function getToLocalStorage(reponse){
-
-    const receivedFromAPI = reponse.data.id;
-
-
-    localStorage.setItem('idQuizzUsuario', JSON.stringify(receivedFromAPI));
-
-    quizzIsReady();
 }
 
 function quizzIsReady() {
