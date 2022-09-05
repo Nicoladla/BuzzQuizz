@@ -25,6 +25,7 @@ body{
 }
 
 /* ========================= */
+
 /*Estilização da Tela Inicial*/
 .sem-quizz-usuario {
     width: 1051px;
@@ -168,7 +169,7 @@ body{
 }
 
 /*Estilização da segunda Tela (Exibição do quizz)*/
-.titulo-do-quizz{
+ .titulo-do-quizz{
     width: 100%;
     height: 227px;
     margin: 69px 0 42px;
@@ -199,9 +200,9 @@ body{
     top: 50%;
     left: 50%;
     z-index: 2;
-}
+} 
     /*Aqui sera feito o layout das perguntas*/
-.pergunta-quizz{
+ .pergunta-quizz{
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     width: 759px;
@@ -238,11 +239,11 @@ body{
     height: 175px;
     object-fit: cover;
     margin-bottom: 5px;
-}
+} 
         /*Aqui será definido uma cor padrao para a descrição das img e
         uma cor correspondente a resposta certa e as erradas e tambem
         a estilizaçao quando clicado em uma alternativa*/
-.res-errada{
+ .res-errada{
     color: #FF4B4B;
     font-weight: 700;
     font-size: 20px;
@@ -259,9 +260,9 @@ body{
 }
 .desfocar{
     opacity: 0.3;
-}
+} 
     /*Aqui será estilizado o quadro do resultado e os botões*/
-.resultado-quizz{
+ .resultado-quizz{
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     width: 759px;
@@ -326,7 +327,8 @@ body{
 }
 .final button:hover{
     opacity: 0.5;
-}
+} 
+
 
 /*Aqui é onde vai ser feito o layout responsivo*/
 @media(max-width: 400px){
@@ -353,7 +355,7 @@ body{
     font-weight: 700;
     color: #000000;
     font-size: 23px;
-    margin-top: 80px;
+    margin-top: 135px;
 }
 
 .basicInfo{
@@ -474,7 +476,7 @@ body{
 }
 
 .createQuestions  > .expanded > .wrongImage{
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 }
 
 .createQuestions > .expanded > input::placeholder{
@@ -493,6 +495,7 @@ body{
 }
 
 .createLevels{
+    position: relative;
     width: 600px;
     padding: 18px 17px;
     box-sizing: border-box;
@@ -504,12 +507,25 @@ body{
     justify-content: space-between;
 }
 
+.createLevels > .ionicon2 {
+    font-size: 35px;
+    position: absolute;
+    top: 28px;
+    right: 25px;
+    color: #000000;
+    opacity: 50%;
+}
+
 .createLevels > h2{
     font-weight: 700;
     color: #000000;
     font-size: 20px;
     margin-top: 18px;
     margin-bottom: 11px;
+}
+
+.createLevels > .reduced {
+    display: none;
 }
 
 .createLevels > input{
@@ -523,6 +539,23 @@ body{
 }
 
 .createLevels > input::placeholder{
+    font-size: 19px;
+    color: #bababa;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.createLevels > .expanded2 > input{
+    width: 564px;
+    height: 46px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    margin-top: 9px;
+}
+
+.createLevels > .expanded2 > input::placeholder{
     font-size: 19px;
     color: #bababa;
     font-weight: 400;
