@@ -330,6 +330,11 @@ body{
 } 
 
 
+/*Aqui é onde vai ser feito o layout responsivo*/
+@media(max-width: 400px){
+    
+}
+
 /* nicolas já colocou o fun cinza claro */
 .create{
     background-color: #E5E5E5;
