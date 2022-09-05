@@ -1,5 +1,5 @@
 //Essa função é utilizada para embaralhar um array.
-function embaralharArray(arr){
+ function embaralharArray(arr){
     for(let i = arr.length-1; i>0; i--){
         let j = Math.floor( Math.random() * (i + 1) );
         [arr[i],arr[j]]=[arr[j],arr[i]];
@@ -206,7 +206,7 @@ function reiniciarQuizz(){
     exibirTitulo.scrollIntoView();
     irPraTelaDoQuizz(quizzAtual);
 }
-
+ 
 //--------------------------------------------
 
 let objQuizz = {
@@ -283,8 +283,8 @@ function createQuestions(){
 
         for(let i = 1; i < numQuestions ; i++){
             hiddenQuestions = hiddenQuestions + `
-            <div class="createQuestions" onclick = "expand(this)">
-                <ion-icon class = "ionicon" name="create-sharp"></ion-icon>
+            <div class="createQuestions">
+                <ion-icon class = "ionicon" name="create-sharp" onclick = "expand(this)"></ion-icon>
                 <h2 class = "apparent">Pergunta ${i+1}</h2>
                     <div class = "reduced">
                         <input type="text" class="theQuestion${i+1}" placeholder="Texto da pergunta">
@@ -303,7 +303,6 @@ function createQuestions(){
             </div>`;
         }
 
-        console.log(numQuestions)
         createAquizz.innerHTML = createAquizz.innerHTML + `
         <h1>Crie suas perguntas</h1>
         <div class="createQuestions">
@@ -322,7 +321,7 @@ function createQuestions(){
                     <input type="text" class="wrongImage1-3" placeholder="URL da imagem 3">
         </div>
         ${hiddenQuestions}
-        <button class="proceedTolevels" onclick = "getQuestionValues()">Prosseguir pra criar níveis</button>`;
+        <button class="proceedTolevels" onclick = "getQuestionValues(), setTimeout(createLevels(),1500)">Prosseguir pra criar níveis</button>`;
 
         }
         
@@ -363,7 +362,7 @@ function getQuestionValues(){
         }
         
         let theCorrectAnswer = document.querySelector(`.correctAnswer${j}`).value;
-        let theCorrectImage = querySelector(`.correctImage${j}`).value;
+        let theCorrectImage = document.querySelector(`.correctImage${j}`).value;
 
         if (!isValidUrl(theCorrectImage) || theCorrectAnswer.length < 1){
             alert('Olá! Por favor preencha corretamente o campo de reposta!')
@@ -390,23 +389,198 @@ function getQuestionValues(){
             objQuestion.answers.push(theIncorrect1);
         }
 
-        const theIncorrect2 = {
-            text: document.querySelector(`.incorrectAnswer${j}-2`).value,
-            image: document.querySelector(`.wrongImage${j}-2`).value,
-            isCorrectAnswer: false
-        };
-        objQuestion.answers.push(theIncorrect2);
+        let theinorrectAnswer2 = document.querySelector(`.incorrectAnswer${j}-2`).value;
+        let theinorrectImage2 = document.querySelector(`.wrongImage${j}-2`).value;
 
-        const theIncorrect3 = {
-            text: document.querySelector(`.incorrectAnswer${j}-3`).value,
-            image: document.querySelector(`.wrongImage${j}-3`).value,
-            isCorrectAnswer: false
-        };
-        objQuestion.answers.push(theIncorrect3);
+        if(theinorrectAnswer2 !== undefined && theinorrectAnswer2 !== ""  && theinorrectAnswer2 !== null){
+            if (!isValidUrl(theinorrectImage2)){
+                alert('Olá! Por favor preencha com a URL válida para a imagem!');
+            }else{
+                const theIncorrect2 = {
+                    text: theinorrectAnswer2,
+                    image: theinorrectImage2,
+                    isCorrectAnswer: false
+                };
+                objQuestion.answers.push(theIncorrect2);
+            }
+        }else if(theinorrectAnswer2 === undefined || theinorrectAnswer2 === "" || theinorrectAnswer2 === null ){
+            if(theinorrectImage2 === undefined || theinorrectImage2 === "" || theinorrectImage2 === null ){
+                const theIncorrect2 = {
+                    text: theinorrectAnswer2,
+                    image: theinorrectImage2,
+                    isCorrectAnswer: false
+                };
+                objQuestion.answers.push(theIncorrect2);
+            }else{
+                alert('Olá! Por favor preencha corretamente o campo de reposta!');  
+            }
+        } 
+        
+
+        let theinorrectAnswer3 = document.querySelector(`.incorrectAnswer${j}-3`).value;
+        let theinorrectImage3 = document.querySelector(`.wrongImage${j}-3`).value;
+
+        if(theinorrectAnswer3 !== undefined && theinorrectAnswer3 !== "" && theinorrectAnswer3 !== null){
+            if (!isValidUrl(theinorrectImage3)){
+                alert('Olá! Por favor preencha com a URL válida para a imagem!');
+            }else{
+                const theIncorrect3 = {
+                    text: theinorrectAnswer3,
+                    image: theinorrectImage3,
+                    isCorrectAnswer: false
+                };
+                objQuestion.answers.push(theIncorrect3);
+            }
+        }else if(theinorrectAnswer3 === undefined || theinorrectAnswer3 === "" || theinorrectAnswer3 === null){
+            if(theinorrectImage3 === undefined || theinorrectImage3 === "" || theinorrectImage3 === null){
+                const theIncorrect3 = {
+                    text: theinorrectAnswer3,
+                    image: theinorrectImage3,
+                    isCorrectAnswer: false
+                };
+                objQuestion.answers.push(theIncorrect3);
+            }else{
+                alert('Olá! Por favor preencha corretamente o campo de reposta!');  
+            }
+        } 
         objQuizz.questions.push(objQuestion);
     }
 
     console.log(objQuizz.questions);
 } 
-/* ======= */
 
+function expand2(ioniconn){
+    const reduced =  document.querySelector('.reduced');
+    reduced.classList.remove('reduced');
+    reduced.classList.add('expanded2');
+}
+
+function createLevels(){
+
+    let hiddenLevels =  ``;
+
+    resetinnerHTML()
+
+    for(let l = 1; l < numLevels ; l++){
+        hiddenLevels = hiddenLevels + `
+            <div class="createLevels">
+                <ion-icon class = "ionicon2" name="create-sharp" onclick = "expand2(this)"></ion-icon>
+                <h2>Nível ${l+1}</h2>
+                <div class = 'reduced'>
+                    <input type="text" class="levelTitle${l+1}" placeholder="Título do Nível">
+                    <input type="text" class="percent${l+1}" placeholder="% de acerto mínima">
+                    <input type="text" class="levelImage${l+1}" placeholder="URL da imagem do nível">
+                    <input type="text" class="levelText${l+1}" placeholder="Descrição do nível">
+                </div>
+            </div>`
+    }
+
+    createAquizz.innerHTML = createAquizz.innerHTML + `
+            <h1>Agora, decida os níveis</h1>
+            <div class="createLevels">
+                <h2>Nível 1</h2>
+                <input type="text" class="levelTitle1" placeholder="Título do Nível">
+                <input type="text" class="percent1" placeholder="% de acerto mínima">
+                <input type="text" class="levelImage1" placeholder="URL da imagem do nível">
+                <input type="text" class="levelText1" placeholder="Descrição do nível">
+            </div>
+            ${hiddenLevels}
+            <button class="quizzFinalize" onclick = "getLevelValues()" >Finalizar Quizz</button>`
+
+
+}
+
+function checkzero (num){
+    if (num === 0){
+        return true
+    }
+}
+
+function getLevelValues(){
+ 
+    let percents = [];
+    
+
+    for( let k = 1 ; k <= numLevels ; k++){
+
+        let objLevel = {
+            title: undefined,
+            image: undefined,
+            text: undefined,
+            minValue: undefined
+        }
+
+        let leveltitle = document.querySelector(`.levelTitle${k}`).value;
+
+        if(leveltitle.length < 10){
+            alert('Olá! O título de seu nível deve ter no mínimo 10 caracteres!');
+        } else {
+            objLevel.title = leveltitle;
+        }
+
+        let levelimage = document.querySelector(`.levelImage${k}`).value;
+
+        if(!isValidUrl(levelimage)){
+            alert('Olá! Por favor preencha com a URL válida para a imagem!');
+        }else{
+            objLevel.image = levelimage;
+        }
+
+        let leveltext = document.querySelector(`.levelText${k}`).value;
+
+        if(leveltext.length < 30 ){
+            alert('Olá! A descrição de seu nível deve ter no mínimo 10 caracteres!');
+        }else{
+            objLevel.text = leveltext;
+        }
+
+        let percent = Number(document.querySelector(`.percent${k}`).value);
+
+        if(percent === null || percent === undefined || percent === '' || percent < 0 || percent > 100) {
+            alert('Olá! Por favor preencha com um número válido de 0 a 100 para a porcentagem de acerto de seu quizz!');
+        }else{
+            objLevel.minValue = percent;
+            percents.push(percent);
+        }
+
+        let filtrado = percents.filter(checkzero);
+         if( filtrado.length < 1){
+            alert('Olá! Em ao menos um dos níveis a porcentagem de acerto mínima de seu quizz deve ser 0!');
+        }else{
+            objQuizz.levels.push(objLevel);      
+        }
+    
+}
+
+const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', objQuizz);
+promisse.then(getToLocalStorage);
+
+}
+
+function getToLocalStorage(reponse){
+
+    const receivedFromAPI = reponse.data;
+
+    localStorage.setItem('userQuizz', JSON.stringify(receivedFromAPI));
+
+    quizzIsReady();
+}
+
+function quizzIsReady() {
+
+    resetinnerHTML()
+
+    createAquizz.innerHTML = createAquizz.innerHTML + `
+        <h1>Seu quizz está pronto!</h1>
+            <div class="quizzReady">
+                    <div class="gradient"></div>
+                    <img src="${objQuizz.image}">
+                    <h2>${objQuizz.title}</h2>
+            </div>
+            <button class="accessQuizz">Acessar Quizz</button>
+            <h3 onclick = "voltarPraTelaInicial()">Voltar pra home</h3> `;
+
+}
+
+
+/* ======= */
