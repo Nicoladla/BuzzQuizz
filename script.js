@@ -24,7 +24,7 @@ function getToLocalStorage(reponse){
 
     quizzIsReady();
 }
-
+localStorage.clear()
 //Esse é o link da API do BuzzQuizz
 const API= "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes";
 
@@ -61,17 +61,19 @@ function renderizarQuizzServidor(res){
     //Aqui é pegado os ids dos quizzes do usuario e Deserializado.
     let quizzesDoUsuario= localStorage.getItem("idsQuizzUsuario");
     quizzesDoUsuario= JSON.parse(quizzesDoUsuario);
-
+    console.log(quizzesDoUsuario)
     quizzServidor.innerHTML= ""
 
     
     for(let i=0; i<res.data.length; i++){
 
-        for(let j=0; j<quizzesDoUsuario.length; j++){
+        if(quizzesDoUsuario !== null){
+            for(let j=0; j<quizzesDoUsuario.length; j++){
 
-            if(quizzesDoUsuario[j] === res.data[i].id){
-                renderizarQuizzUsuario(res.data[i]);
-                break;
+                if(quizzesDoUsuario[j] === res.data[i].id){
+                    renderizarQuizzUsuario(res.data[i]);
+                    break;
+                }
             }
         }
 

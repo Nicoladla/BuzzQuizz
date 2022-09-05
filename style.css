@@ -329,7 +329,6 @@ body{
     opacity: 0.5;
 } 
 
-
 /*Aqui é onde vai ser feito o layout responsivo*/
 @media(max-width: 400px){
     
@@ -422,13 +421,6 @@ body{
     color: #000000;
     opacity: 50%;
 }
-
-
-
-/* .createQuestions > ion-icon .nosee {
-    color: #FFFFFF;
-} */
-
 
 .createQuestions > .reduced {
     display: none;
