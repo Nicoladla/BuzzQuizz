@@ -24,8 +24,6 @@ body{
     z-index: 10;
 }
 
-/* ========================= */
-
 /*Estilização da Tela Inicial*/
 .sem-quizz-usuario {
     width: 1051px;
@@ -331,10 +329,22 @@ body{
 
 /*Aqui é onde vai ser feito o layout responsivo*/
 @media(max-width: 400px){
-    
+    .tela1-inicial article button{
+        width: 88%;
+        padding: 0 3%;
+    }
+    .sem-quizz-usuario {
+        width: 100%;
+        margin-top: 140px ;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    .quizz-servidor{
+        width: 100%;
+        padding-left: 10%;
+    }
 }
 
-/* nicolas já colocou o fun cinza claro */
 .create{
     background-color: #E5E5E5;
 }
@@ -634,22 +644,4 @@ h3{
     .createLevels > .expanded2 > input{
         width: 88%;
     }
-
-    .tela1-inicial article button{
-        width: 88%;
-        padding: 0 3%;
-    }
-
-    .sem-quizz-usuario {
-        width: 100%;
-        margin-top: 140px ;
-        margin-left: 2%;
-        margin-right: 2%;
-    }
-
-    .quizz-servidor{
-        width: 100%;
-        padding-left: 10%;
-    }
-
 }

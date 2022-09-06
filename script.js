@@ -24,18 +24,18 @@ function getToLocalStorage(reponse){
 
     quizzIsReady();
 }
-localStorage.clear()
+
 //Esse é o link da API do BuzzQuizz
 const API= "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes";
 
 //Essa é a parte em que os quizzes do servidor são renderizados na tela Inicial. 
 function buscarQuizzesServidor(){
     const promessa= axios.get(API);
-    promessa.then(renderizarQuizzServidor);
+    promessa.then(renderizarQuizzes);
 }
 buscarQuizzesServidor();
 
-//Essa é a parte em que os quizzes do usuário são renderizados
+//Essa é a parte em que os quizzes do usuário e do servidor são renderizados
 function renderizarQuizzUsuario(seusQuizzes){
     const seusquizzUsuario= document.querySelector(".quizz-usuario .seus-quizzes");
 
@@ -54,17 +54,26 @@ function renderizarQuizzUsuario(seusQuizzes){
             `;
 }
 
-function renderizarQuizzServidor(res){
-    const quizzServidor= document.querySelector(".quizz-servidor .todos-quizzes");
-    console.log(res.data)
+function renderizarQuizzServidor(quizzServidor){
+    const todosQuizzes= document.querySelector(".quizz-servidor .todos-quizzes");
+
+    todosQuizzes.innerHTML+= `
+    <figure id="${quizzServidor.id}" onclick="irPraTelaDoQuizz(${quizzServidor.id})" data-identifier="quizz-card">
+        <img src="${quizzServidor.image}" alt="quizz">
+        <div class="gradiente"></div>
+        <figcaption>${quizzServidor.title}</figcaption>
+    </figure>
+`;
+}
+
+    //Aqui sera validado se o quizz é o do usuario ou não, e tbm sera chamada a função que renderizará os quizzes.
+function renderizarQuizzes(res){
 
     //Aqui é pegado os ids dos quizzes do usuario e Deserializado.
     let quizzesDoUsuario= localStorage.getItem("idsQuizzUsuario");
     quizzesDoUsuario= JSON.parse(quizzesDoUsuario);
-    console.log(quizzesDoUsuario)
-    quizzServidor.innerHTML= ""
-
     
+    //Validação
     for(let i=0; i<res.data.length; i++){
 
         if(quizzesDoUsuario !== null){
@@ -73,18 +82,15 @@ function renderizarQuizzServidor(res){
                 if(quizzesDoUsuario[j] === res.data[i].id){
                     renderizarQuizzUsuario(res.data[i]);
                     break;
+
+                }else if(j === quizzesDoUsuario.length -1){
+                    renderizarQuizzServidor(res.data[i]);
                 }
             }
+
+        }else{
+            renderizarQuizzServidor(res.data[i]);
         }
-
-        quizzServidor.innerHTML+= `
-            <figure id="${res.data[i].id}" onclick="irPraTelaDoQuizz(${res.data[i].id})" data-identifier="quizz-card">
-                <img src="${res.data[i].image}" alt="quizz">
-                <div class="gradiente"></div>
-                <figcaption>${res.data[i].title}</figcaption>
-            </figure>
-        `;
-
     }
 }
 
@@ -263,7 +269,6 @@ function reiniciarQuizz(){
     irPraTelaDoQuizz(quizzAtual);
 }
 
-
 //Essa é a parte em que o usuário vai para a tela de criação do quizz.
 function irPraTelaDeCriaçãoDoQuizz(){
     const telaInicial= document.querySelector(".tela1-inicial");
@@ -315,12 +320,6 @@ function getBasicInfoValues(){
     }else{
         alert('Olá, o número mínimo de níveis de seu novo quizz deve ser 2')
     }
-    
-    console.log(objQuizz.title)
-    console.log(objQuizz.image)
-    console.log(numQuestions)
-    console.log(numLevels)
-
 }
 /* criação da função para validação da URL*/
 const isValidUrl = urlString=> {
@@ -336,8 +335,6 @@ return !!urlPattern.test(urlString);
 function resetinnerHTML (){
     createAquizz.innerHTML = ''
 }
-
-
 
 function createQuestions(){
 
@@ -399,7 +396,6 @@ function expand(botao){
 }
 
 var reg=/^#([0-9a-f]{3}){1,2}$/i; //https://www.codegrepper.com/code-examples/javascript/javascript+check+if+string+is+valid+hex+color
-
 
 function getQuestionValues(){
      
@@ -638,7 +634,3 @@ function quizzIsReady() {
             <h3 onclick = "voltarPraTelaInicial()">Voltar pra home</h3> `;
 
 }
-
-
-/* ======= */
-
