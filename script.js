@@ -507,7 +507,6 @@ function getQuestionValues(){
         objQuizz.questions.push(objQuestion);
     }
 
-    console.log(objQuizz.questions);
     setTimeout(createLevels(),1500)
 } 
 
