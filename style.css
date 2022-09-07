@@ -273,6 +273,7 @@ body{
     justify-content: space-between;
 }
 .opçao-de-resposta figure{
+    width: 329px;
     margin-bottom: 20px;
     overflow: hidden;
     cursor: pointer;
@@ -290,16 +291,19 @@ body{
     color: #FF4B4B;
     font-weight: 700;
     font-size: 20px;
+    overflow: hidden;
 }
 .res-certa{
     color: #009C22;
     font-weight: 700;
     font-size: 20px;
+    overflow: hidden;
 }
 .cor-padrao{
     color: #000000;
     font-weight: 700;
     font-size: 20px;
+    overflow: hidden;
 }
 .desfocar{
     opacity: 0.3;
