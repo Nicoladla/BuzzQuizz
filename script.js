@@ -6,6 +6,10 @@
     }
 }
 
+function emObra(){
+    alert("Essa funcionalidade ainda está em construção.")
+}
+
 //Essa é a função que armazena o id do quizz.
 function getToLocalStorage(reponse){
     const receivedFromAPI = reponse.data.id;
@@ -46,9 +50,17 @@ function renderizarQuizzUsuario(seusQuizzes){
     quizzUsuario.classList.remove('oculto');
 
     seusquizzUsuario.innerHTML+= `
-                <figure id="${seusQuizzes.id}" onclick="irPraTelaDoQuizz(${seusQuizzes.id})">
+                <figure id="${seusQuizzes.id}">
                     <img src="${seusQuizzes.image}" alt="quizz">
-                    <div class="gradiente"></div>
+                    <div class="gradiente" onclick="irPraTelaDoQuizz(${seusQuizzes.id})"></div>
+                    <div class="edititar-excluir">
+                        <div  onclick="emObra()">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </div>
+                        <div  onclick="emObra()">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </div>
+                    </div>
                     <figcaption>${seusQuizzes.title}</figcaption>
                 </figure>
             `;

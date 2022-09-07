@@ -75,12 +75,14 @@ body{
     height: 181px;
     margin-right: 15px;
     margin-bottom: 12px;
+    border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
 }
 .quizz-servidor figure:hover{
-    opacity: 0.8;
+    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.831);
+    opacity: 0.9;
 }
 .quizz-servidor figure img{
     width: 340px;
@@ -109,6 +111,7 @@ body{
     left: 18px;
     z-index: 2;
 }
+
     /*Aqui é onde é estilizado os quizzes do usuário*/
 .quizz-usuario{
     width: 1080px;
@@ -142,13 +145,15 @@ body{
     width: 340px;
     height: 181px;
     overflow: hidden;
+    border-radius: 5px;
     margin-right: 15px;
     margin-bottom: 12px;
     cursor: pointer;
     position: relative;
 }
 .seus-quizzes figure:hover{
-    opacity: 0.8;
+    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.831);
+    opacity: 0.9;
 }
 .seus-quizzes figure img{
     width: 340px;
@@ -166,6 +171,41 @@ body{
     bottom: 7px;
     left: 18px;
     z-index: 2;
+}
+.edititar-excluir{
+    background: #EC362D;
+    width: 43px;
+    height: 87px;
+    border-radius: 10px 0 0 10px;
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    z-index: 2;
+}
+.seus-quizzes figure:hover .edititar-excluir{
+    display: inline;
+}
+.edititar-excluir div{
+    width: 100%;
+    height: 50%;
+    border-radius: 10px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.edititar-excluir div:last-child{
+    border-radius: 0 0 0 10px;
+}
+.edititar-excluir div:first-child:hover{
+    box-shadow: 0 1px 4px #ac2922;
+}
+.edititar-excluir div:last-child:hover{
+    box-shadow: 0 -1px 4px #ac2922;
+}
+.edititar-excluir ion-icon{
+    color: rgb(221, 221, 221);
+    font-size: 30px;
 }
 
 /*Estilização da segunda Tela (Exibição do quizz)*/
@@ -219,6 +259,8 @@ body{
     width: 688px;
     height: 137px;
     margin: 25px auto;
+    padding: 0 5px;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -282,6 +324,8 @@ body{
     width: 727px;
     height: 99px;
     margin: 0 auto;
+    padding: 0 5px;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -339,6 +383,9 @@ body{
         margin: 107px auto 38px;
     }
 
+    .edititar-excluir{
+        display: inline;
+    }
     .quizz-usuario{
         width: 100%;
         margin: 107px 0 38px;
@@ -407,7 +454,7 @@ body{
         margin: 69px 0 24px
     }
     .titulo-do-quizz h1{
-        font-size: 25px;
+        font-size: clamp(20px, 22px + 1vw, 39px);
     } 
     .pergunta-quizz{
         width: 100%;
@@ -415,7 +462,7 @@ body{
         margin: 0 0 48px;
     }
     .pergunta-quizz header{
-        font-size: 19px;
+        font-size: clamp(15px, 16px + 1vw, 23px);
         width: 90%;
         height: 89px;
         margin: 18px auto 13px;
@@ -435,17 +482,17 @@ body{
         object-fit: cover;
     }
     .res-errada{
-        font-size: 13px;
+        font-size: clamp(11px, 11px + 1vw, 20px);
         width: 100%;
         height: 10%;
     }
     .res-certa{
-        font-size: 13px;
+        font-size: clamp(11px, 11px + 1vw, 20px);
         width: 100%;
         height: 10%;
     }
     .cor-padrao{
-        font-size: 13px;
+        font-size: clamp(11px, 11px + 1vw, 20px);
         width: 100%;
         height: 10%;
     }
@@ -456,7 +503,7 @@ body{
         margin: 0 0 34px;
     }
     .resultado-quizz header{
-        font-size: 19px;
+        font-size: clamp(15px, 16px + 1vw, 23px);
         width: 90%;
         height: 99px;
         margin: 18px auto 9px;
@@ -472,7 +519,7 @@ body{
         margin-bottom: 9px;
     }
     .resultado-quizz figcaption{
-        font-size: 17px;
+        font-size: clamp(14px, 15px + 1vw, 19px);
         margin-left: 0;
         margin-bottom: 16px;
     }
